@@ -36,7 +36,7 @@ public class FlyLUCKService {
         try{
             cn = DBConnect();
             st = cn.createStatement();
-            String sql = "select ORIGIN.ICAO as ORIGIN, FROMAIRPORTNAME, DEST.ICAO as DEST, TOAIRPORTNAME, l.LOCALLEAVE from t_Leg l\n" +
+            String sql = "select l.LEGID, l.TRIPNUM, ORIGIN.ICAO as ORIGIN, FROMAIRPORTNAME, DEST.ICAO as DEST, TOAIRPORTNAME, l.LOCALLEAVE from t_Leg l\n" +
                     "JOIN t_Airport ORIGIN on ORIGIN.airportID = l.FROMAIRPORTID\n" +
                     "JOIN t_Airport DEST on DEST.airportID = l.TOAIRPORTID\n" +
                     "where l.LEGLOCALDATE BETWEEN '" + fromDate + "' AND '" + toDate + "'\n" +
@@ -96,6 +96,8 @@ public class FlyLUCKService {
                 map.put(rsmd.getColumnName(3), rs.getString(3));
                 map.put(rsmd.getColumnName(4), rs.getString(4));
                 map.put(rsmd.getColumnName(5), rs.getString(5));
+                map.put(rsmd.getColumnName(6), rs.getString(6));
+                map.put(rsmd.getColumnName(7), rs.getString(7));
                 al.add(map);
             }
         }

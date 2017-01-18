@@ -20,7 +20,7 @@ import java.util.Map;
 public class FlyLUCKController {
     
     @RequestMapping("/getallflights")
-    public static String GetAllFlights(@RequestParam(value="month", defaultValue="1") String name){
+    public static String GetAllFlights(@RequestParam(value="month", defaultValue="2") String name){
         return "Hello " + name + "!";
     }
     
